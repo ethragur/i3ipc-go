@@ -16,6 +16,12 @@ import (
 	"encoding/json"
 )
 
+type WindowProps struct {
+	Class			 string
+	Instance		 string
+	Title			 string
+}
+
 // I3Node represents a Node in the i3 tree. For documentation of the fields,
 // refer to http://i3wm.org/docs/ipc.html#_tree_reply.
 type I3Node struct {
@@ -25,13 +31,16 @@ type I3Node struct {
 	Border             string
 	CurrentBorderWidth int32 `json:"current_border_width"`
 	Layout             string
+	Output			   string
 	Orientation        string
+	Num				   int32
 	Percent            float64
 	Rect               Rect
 	WindowRect         Rect
 	DecoRect           Rect `json:"deco_rect"`
 	Geometry           Rect
 	Window             int32
+	Window_Properties  WindowProps
 	Urgent             bool
 	Focused            bool
 	Nodes              []I3Node
